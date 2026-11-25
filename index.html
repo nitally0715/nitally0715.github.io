@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강범수 | Portfolio</title>
+<meta name="description" content="부산대학교 정보컴퓨터공학부 강범수 포트폴리오. 인프라, 클라우드, 네트워크.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#2563eb;--ink:#0f172a;--body:#334155;--muted:#475569;--line:#e2e8f0;--bg:#f8fafc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;word-break:keep-all;background:var(--bg);color:var(--ink);font-family:Inter,'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+img{max-width:100%}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{scroll-margin-top:84px;padding:48px 0}
+h2{margin:0 0 24px;font-size:36px;font-weight:800;letter-spacing:-.02em}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.chip{display:inline-block;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.btn{display:inline-block;border-radius:12px;padding:12px 18px;font-weight:600;font-size:14px;text-align:center}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-line{background:#fff;color:var(--ink);border:1px solid #cbd5e1}
+
+/* motion */
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.up{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}100%{box-shadow:0 0 0 10px rgba(34,197,94,0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.lift{transition:transform .25s ease,box-shadow .25s ease}
+.lift:hover{transform:translateY(-4px);box-shadow:0 16px 32px -14px rgba(15,23,42,.28)}
+.zoom{transition:transform .5s ease}
+.zoom-box:hover .zoom{transform:scale(1.02)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.up,.ping{animation:none}.lift,.zoom,.reveal{transition:none}.reveal{opacity:1;transform:none}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(248,250,252,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+.logo{font-weight:800;font-size:18px;color:var(--ink)}
+.menu{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:14px;font-weight:600}
+.menu a{border-radius:999px;padding:10px 12px;color:var(--body);transition:background .2s ease,color .2s ease}
+.menu a:hover{background:var(--line)}
+.menu a.active{background:var(--ink);color:#fff}
+.menu .gh{margin-left:8px;background:var(--ink);color:#fff;padding:10px 16px}
+
+/* hero */
+header{padding:88px 0 48px}
+header .wrap{display:flex;flex-direction:column;gap:24px}
+.status{align-self:flex-start;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 12px;font-size:14px;color:var(--body)}
+.dot{width:10px;height:10px;border-radius:50%;background:#22c55e;animation:ping 1.6s ease-out infinite}
+h1{margin:0;font-size:64px;line-height:1.08;font-weight:800;letter-spacing:-.03em}
+h1 span{color:var(--accent)}
+.lead{max-width:860px;font-size:19px;line-height:1.7;color:var(--body)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;max-width:720px;padding-top:16px}
+.stat{display:block;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;color:var(--ink)}
+.stat small{font-size:13px;color:var(--muted)}
+.stat b{display:block;margin-top:6px;font-size:30px;font-weight:800}
+.stat b i{font-style:normal;font-size:16px;font-weight:500;color:var(--muted)}
+
+/* research */
+.research{padding:32px;display:flex;flex-direction:column;gap:12px}
+.research.dark{background:var(--ink);color:#fff;border:none}
+.research h3{margin:0;font-size:24px;font-weight:700}
+.research .k{font-size:13px;color:var(--muted)}
+.research.dark .k{color:#93c5fd}
+.research .d{font-size:15px;line-height:1.7;color:var(--body)}
+.research.dark .d{color:#cbd5e1}
+
+/* projects */
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.head h2{margin:0}
+.tabs{display:flex;gap:4px;background:var(--line);border-radius:999px;padding:4px}
+.tabs button{border:none;border-radius:999px;padding:10px 20px;min-height:44px;font:600 14px Inter,'Noto Sans KR',sans-serif;cursor:pointer;background:transparent;color:var(--body);transition:background .2s ease,color .2s ease}
+.tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.project{border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:28px}
+.project[hidden]{display:none}
+.p-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
+.p-info{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.p-info h3{margin:0;font-size:32px;font-weight:800}
+.p-info .desc{font-size:17px;line-height:1.7;color:var(--body)}
+.p-links{display:flex;flex-direction:column;gap:10px;flex:0 0 auto}
+.label{font-size:15px;font-weight:700}
+.roles{background:var(--bg);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.roles .grid{gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.role{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.role b{font-size:15px}
+.role span{font-size:14px;line-height:1.6;color:var(--body)}
+.svc{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.svc div{border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.svc b{font-size:15px}
+.svc span{font-size:13px;line-height:1.5;color:var(--muted)}
+.diagram{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;cursor:zoom-in}
+.diagram img{display:block;width:100%;height:auto}
+figure{margin:0;display:flex;flex-direction:column;gap:10px}
+figcaption{font-size:13px;color:var(--muted)}
+
+/* timeline */
+.timeline{border-radius:24px;padding:8px 32px}
+.row{display:flex;flex-wrap:wrap;gap:6px 28px;padding:22px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.when{flex:0 0 210px;display:flex;align-items:flex-start;gap:12px;font-size:14px;font-weight:500;color:var(--muted);line-height:1.7}
+.when i{flex:0 0 auto;width:10px;height:10px;margin-top:7px;border-radius:50%;background:#94a3b8}
+.what{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:4px}
+.what b{font-size:17px}
+.what span{font-size:15px;line-height:1.6;color:var(--muted)}
+.tag{border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;margin-left:8px;vertical-align:2px}
+
+.pts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:10px}
+.pt{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.pt em{align-self:flex-start;font-style:normal;font-size:12px;font-weight:700;color:#166534;background:#dcfce7;border-radius:999px;padding:3px 10px}
+.pt span{font-size:14px;line-height:1.6;color:var(--body)}
+.item{padding:28px;display:flex;flex-direction:column;gap:10px}
+.item small{font-size:13px;color:var(--muted)}
+.item b{font-size:19px;line-height:1.4}
+.item span{font-size:14px;line-height:1.6;color:var(--muted)}
+.award-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+.scholar{background:var(--ink);color:#fff;border-radius:20px;padding:32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.scholar b{display:block;font-size:24px;font-weight:800}
+.scholar span{font-size:15px;color:#cbd5e1}
+.scholar .period{background:#1e293b;color:#e2e8f0;border-radius:12px;padding:12px 16px;font-size:15px;font-weight:600}
+
+.cert{overflow:hidden;display:flex;flex-direction:column}
+.cert .thumb{display:block;width:100%;padding:0;border:none;background:#f1f5f9;height:240px;overflow:hidden;cursor:zoom-in}
+.cert .thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.cert .body{padding:24px;display:flex;flex-direction:column;gap:6px}
+.cert .body b{font-size:19px}
+.cert .body span{font-size:14px;color:var(--body)}
+.cert .body small{font-size:13px;color:var(--muted)}
+.cert.aws{background:#232f3e;color:#fff;border:none}
+.cert.aws .thumb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#1a2330;cursor:default}
+.cert.aws .body span,.cert.aws .body small{color:#cbd5e1}
+
+footer{background:var(--ink);color:#e2e8f0}
+footer .wrap{padding-top:56px;padding-bottom:56px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+footer .links{display:flex;flex-wrap:wrap;gap:12px}
+footer .links a{border:1px solid #64748b;color:#fff;border-radius:12px;padding:12px 18px;font-weight:600;font-size:15px}
+footer .links a:first-child{background:#fff;color:var(--ink);border-color:#fff}
+
+/* lightbox */
+.viewer{position:fixed;inset:0;z-index:50;background:rgba(15,23,42,.82);display:flex;align-items:center;justify-content:center;padding:32px;animation:fade .25s ease both}
+.viewer[hidden]{display:none}
+.viewer img{max-width:100%;max-height:100%;border-radius:12px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.viewer button{position:absolute;top:20px;right:20px;width:48px;height:48px;border:none;border-radius:50%;background:#fff;color:var(--ink);font-size:22px;font-weight:700;cursor:pointer}
+
+@media (max-width:640px){h1{font-size:44px}h2{font-size:30px}.project{padding:24px}.timeline{padding:8px 20px}}
+</style>
+</head>
+<body>
+
+<nav aria-label="섹션 이동">
+<div class="wrap">
+<a class="logo" href="#top">강범수</a>
+<div class="menu">
+<a href="#research">연구</a>
+<a href="#projects">프로젝트</a>
+<a href="#career">이력</a>
+<a href="#activity">활동</a>
+<a href="#awards">수상</a>
+<a href="#scholarship">장학</a>
+<a href="#certs">자격증</a>
+<a class="gh" href="https://github.com/nitally0715">GitHub</a>
+</div>
+</div>
+</nav>
+
+<header id="top">
+<div class="wrap">
+<h1 class="up" style="animation-delay:.08s">강범수<br><span>Infra, Cloud, Network</span></h1>
+<p class="lead up" style="animation-delay:.16s">부산대학교 정보컴퓨터공학부 3학년입니다. 인프라, 클라우드, 네트워크, Agentic AI에 관심이 있습니다.</p>
+<div class="up" style="display:flex;flex-wrap:wrap;gap:12px;animation-delay:.24s">
+<a class="btn" href="#projects" style="background:var(--accent);color:#fff;padding:14px 22px;font-size:15px">프로젝트 보기</a>
+<a class="btn btn-line" href="mailto:soseze1215@gmail.com" style="padding:14px 22px;font-size:15px">soseze1215@gmail.com</a>
+</div>
+<div class="stats up" style="animation-delay:.32s">
+<div class="stat lift"><small>GPA</small><b>4.34<i> / 4.5</i></b></div>
+<div class="stat lift"><small>TOEIC Speaking</small><b>IH<i> 150 / 200</i></b></div>
+<a class="stat lift" href="https://solved.ac/u/soseze1215"><small>solved.ac</small><b style="color:#b45309">Gold III</b></a>
+</div>
+</div>
+</header>
+
+<section id="research" class="reveal">
+<div class="wrap">
+<h2>연구</h2>
+<div class="grid">
+<div class="card research dark lift">
+<p class="k">CIS Lab, Docker</p>
+<h3>Dockerfile rebuild time 최적화</h3>
+<p class="d">Doctor (ISSTA '25)를 확장해 Docker 이미지 레이어 구성을 최적화하고 재빌드 시간을 줄이는 연구</p>
+</div>
+<div class="card research lift">
+<p class="k">CIS Lab, Wi-Fi Sensing</p>
+<h3>CSI 기반 재실자 탐지 시스템</h3>
+<p class="d">Wi-Fi CSI로 실내 재실자를 탐지하는 프로젝트에서 Bluetooth 파트 담당</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="projects" class="reveal">
+<div class="wrap">
+<div class="head">
+<h2>프로젝트</h2>
+<div class="tabs" role="tablist" aria-label="프로젝트 선택">
+<button role="tab" aria-selected="true" aria-controls="p-crew" data-tab="p-crew">CrewMate</button>
+<button role="tab" aria-selected="false" aria-controls="p-farm" data-tab="p-farm">FarmBroker</button>
+</div>
+</div>
+
+<article id="p-crew" class="card project up" role="tabpanel">
+<div class="p-top">
+<div class="p-info">
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<span class="chip" style="background:#fff7ed;color:#9a3412">AWS Cloud AI PBL 우수상 (2위)</span>
+<span class="chip" style="background:#f1f5f9;color:var(--body);font-weight:500">2026.05.29 ~ 2026.07.29</span>
+</div>
+<h3>CrewMate</h3>
+<p class="desc">건설 일용직 인력 중개를 디지털화하는 AWS 서버리스 플랫폼. 전화와 종이로 하던 작업조 편성을 AI 편성 에이전트와 근로자 수락 절차로 바꿨습니다.</p>
+</div>
+<div class="p-links">
+<a class="btn" href="https://d1872k8ivu18th.cloudfront.net" style="background:#f59e0b;color:#1c1917;font-weight:700">Live Service</a>
+<a class="btn btn-dark" href="https://github.com/dib3474/CrewMate">GitHub Repo</a>
+</div>
+</div>
+<div class="roles">
+<p class="label">내 역할</p>
+<div class="grid">
+<div class="role"><b style="color:#c2410c">PM</b><span>팀 일정과 역할 분담을 관리하고 파트 간 작업을 조율</span></div>
+<div class="role"><b style="color:#c2410c">SW Design</b><span>서버리스 아키텍처와 근로자 상태 흐름, 테이블 구조 설계</span></div>
+<div class="role"><b style="color:#c2410c">Backend</b><span>Lambda 기반 백엔드 API 구현</span></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p class="label">사용한 AWS 서비스</p>
+<div class="svc">
+<div class="lift"><b style="color:#c2410c">Lambda ×8</b><span>Core 6개, Agent Invoke, Report Invoke</span></div>
+<div class="lift"><b style="color:#7c3aed">API Gateway</b><span>REST API, 3~5초 폴링</span></div>
+<div class="lift"><b style="color:#be123c">Cognito</b><span>User Pool, 근로자/사무소/건설사 그룹</span></div>
+<div class="lift"><b style="color:#1d4ed8">DynamoDB ×10</b><span>조건부 쓰기, TransactWriteItems</span></div>
+<div class="lift"><b style="color:#047857">Bedrock</b><span>Claude Sonnet 4.6, Strands Agent 2개</span></div>
+<div class="lift"><b style="color:#047857">Knowledge Base</b><span>S3 Vectors 기반 근거 검색</span></div>
+<div class="lift"><b style="color:#4d7c0f">S3 + KMS</b><span>보고서 암호화, 31일 후 IA, 61일 후 삭제</span></div>
+<div class="lift"><b style="color:#7c3aed">CloudFront, SAM</b><span>SPA 배포, IaC로 전체 스택 관리</span></div>
+</div>
+</div>
+<figure>
+<button class="diagram zoom-box" data-view="assets/crewmate-aws.png" data-alt="CrewMate AWS 아키텍처 다이어그램" aria-label="아키텍처 다이어그램 크게 보기">
+<img class="zoom" src="assets/crewmate-aws.png" alt="CrewMate AWS 서버리스 아키텍처: 사용자 요청이 CloudFront와 API Gateway를 거쳐 Lambda 8개로 가고, DynamoDB, Cognito, S3, Bedrock Claude Sonnet 4.6 기반 Strands Agent 두 개와 연결됨" loading="lazy">
+</button>
+<figcaption>CrewMate AWS 아키텍처. 작업조 편성과 스펙 보고서 에이전트는 Strands와 Claude Sonnet 4.6으로 구현했습니다. 이미지를 누르면 크게 볼 수 있습니다.</figcaption>
+</figure>
+</article>
+
+<article id="p-farm" class="card project up" role="tabpanel" hidden>
+<div class="p-top">
+<div class="p-info">
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<span class="chip" style="background:#ecfdf5;color:#065f46">제7회 PNU 창의융합 AI 해커톤 우수상 (DRB동일대표상)</span>
+<span class="chip" style="background:#f1f5f9;color:var(--body);font-weight:500">2026.05.20 ~ 2026.08.28</span>
+</div>
+<div style="display:flex;align-items:center;gap:14px">
+<img src="assets/farmbroker-symbol.png" alt="FarmBroker 로고" style="width:48px;height:48px;object-fit:contain">
+<h3>FarmBroker</h3>
+</div>
+<p class="desc">도심 유휴공간을 스마트팜으로 바꿔 공실 제공자, 도심 농부, 소비자를 하나로 잇는 직방형 스마트팜 중개 플랫폼.</p>
+</div>
+<div class="p-links">
+<a class="btn" href="https://pnuai-b-06-bomdongmarket.vercel.app" style="background:#204937;color:#fff;font-weight:700">Live Service</a>
+<a class="btn btn-dark" href="https://github.com/PNU-2026-AI-Hackathon/pnuai-b-06-bomdongmarket">GitHub Repo</a>
+<a class="btn btn-line" href="https://youtu.be/aMEDf9XNApE">시연 영상</a>
+</div>
+</div>
+<div class="roles">
+<p class="label">내 역할</p>
+<div class="grid">
+<div class="role"><b style="color:#047857">PM (전체 총괄)</b><span>PR 리뷰와 병합, 테스트 기반 QA, 파트 간 작업 범위와 일정 조율</span></div>
+<div class="role"><b style="color:#047857">소프트웨어 설계</b><span>초기 도메인, API, 공통 구조 구성. 인증, 로컬마켓, 지도 검색 설계 문서 작성</span></div>
+<div class="role"><b style="color:#047857">인프라 구축</b><span>프론트(Nginx)와 백엔드 Dockerfile 작성, Docker Compose로 MySQL 포함 전체 스택 컨테이너화</span></div>
+<div class="role"><b style="color:#047857">Agentic AI</b><span>백엔드 AGENT.md 지침 작성, 설계 Spec과 구현 계획을 기준으로 AI 코딩 에이전트를 활용하는 개발 흐름 운영</span></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p class="label">시스템 구성</p>
+<div class="svc" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+<div class="lift"><span style="font-size:12px;font-weight:600;color:#047857">Frontend</span><b>React, Vite, TS</b><span>Vercel 배포, Kakao Maps</span></div>
+<div class="lift"><span style="font-size:12px;font-weight:600;color:#047857">Backend</span><b>Spring Boot</b><span>REST, WebSocket(STOMP), Render</span></div>
+<div class="lift"><span style="font-size:12px;font-weight:600;color:#047857">Data</span><b>MySQL 8.4</b><span>Aiven 호스팅, JPA</span></div>
+<div class="lift"><span style="font-size:12px;font-weight:600;color:#047857">AI / External</span><b>Gemini, KAMIS</b><span>구조화된 작물 추천, 도매가 수집</span></div>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<section id="career" class="reveal">
+<div class="wrap">
+<h2>이력</h2>
+<div class="card timeline">
+<div class="row"><div class="when"><i style="background:#22c55e"></i>2027.02 ~ 2027.08</div><div class="what"><b>World Blinds (Sydney, Australia)<span class="tag" style="background:#dcfce7;color:#166534">예정</span></b><span>IT Team 인턴, 국외현장실습</span><div class="pts"><div class="pt"><em>Backend</em><span>웹 서비스 백엔드 개발, 데이터베이스 설계 및 보안 시스템 구축</span></div><div class="pt"><em>Cloud</em><span>클라우드 기반 서버 운영, 자동 배포 환경 구축 및 실시간 모니터링 관리</span></div></div></div></div>
+<div class="row"><div class="when"><i style="background:var(--accent)"></i>2026.03 ~ 현재</div><div class="what"><b>CIS Lab, 부산대학교<span class="tag" style="background:#dbeafe;color:#1e40af">진행 중</span></b><span>학부연구생. Docker 레이어 최적화, Agentic AI</span></div></div>
+<div class="row"><div class="when"><i></i>2026.09 ~ 2026.12</div><div class="what"><b>부산대 정보컴퓨터공학부</b><span>플랫폼기반프로그래밍(Java) 수업 조교</span></div></div>
+<div class="row"><div class="when"><i></i>2026.03 ~ 2026.08</div><div class="what"><b>부산대 영재교육원</b><span>사사교육 조교 (IT/수학 융합)</span></div></div>
+<div class="row"><div class="when"><i></i>2026.03 ~ 2026.06</div><div class="what"><b>부산대 정보컴퓨터공학부</b><span>C++프로그래밍과실습 수업 조교</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="activity" class="reveal">
+<div class="wrap">
+<h2>활동</h2>
+<div class="grid">
+<div class="card item lift"><small>2026.05.29 ~ 2026.07.21</small><b>AWS Cloud AI PBL</b><span>AWS, PNU AI융합교육원 주관. CrewMate 팀 PM</span></div>
+<div class="card item lift"><small>2026.05.20 ~ 2026.08.28</small><b>제7회 PNU 창의융합 AI 해커톤</b><span>지정과제트랙 본선 진출. FarmBroker 팀 PM</span></div>
+<div class="card item lift"><small>2022.10</small><b>TechWeek Idea Contest</b><span>아이디어 공모전 참가</span></div>
+</div>
+</div>
+</section>
+
+<section id="awards" class="reveal">
+<div class="wrap">
+<h2>수상</h2>
+<div class="grid">
+<div class="card item lift"><div class="award-top"><span class="chip" style="background:#fef3c7;color:#92400e;font-weight:700">우수상 (DRB동일대표상)</span><small>2026.08.28</small></div><b>제7회 PNU 창의융합 AI 해커톤</b><span>FarmBroker, 지정과제트랙 본선</span></div>
+<div class="card item lift"><div class="award-top"><span class="chip" style="background:#fef3c7;color:#92400e;font-weight:700">우수상 (2위)</span><small>2026.07.20</small></div><b>AWS Cloud AI PBL</b><span>CrewMate, AWS 서버리스 인력 중개 플랫폼</span></div>
+<div class="card item lift"><div class="award-top"><span class="chip" style="background:#fef3c7;color:#92400e;font-weight:700">은상</span><small>2022.10.28</small></div><b>TechWeek Idea Contest</b><span>아이디어 공모전</span></div>
+</div>
+</div>
+</section>
+
+<section id="scholarship" class="reveal">
+<div class="wrap">
+<h2>장학</h2>
+<div class="scholar lift">
+<div><b>국가우수장학생 (이공계)</b><span>과학기술정보통신부</span></div>
+<span class="period">2026.03.01 ~ 2027.12.31</span>
+</div>
+</div>
+</section>
+
+<section id="certs" class="reveal" style="padding-bottom:80px">
+<div class="wrap">
+<h2>자격증</h2>
+<div class="grid">
+<div class="card cert lift">
+<button class="thumb zoom-box" data-view="assets/adsp.jpg" data-alt="ADsP 자격증" aria-label="ADsP 자격증 크게 보기"><img class="zoom" src="assets/adsp.jpg" alt="ADsP 데이터분석 준전문가 자격증, 개인정보 가림" loading="lazy"></button>
+<div class="body"><b>ADsP</b><span>데이터분석 준전문가, 한국데이터산업진흥원</span><small>2025.11.28 합격</small></div>
+</div>
+<div class="card cert lift">
+<button class="thumb zoom-box" data-view="assets/toeic.jpg" data-alt="TOEIC Speaking 성적표" aria-label="TOEIC Speaking 성적표 크게 보기"><img class="zoom" src="assets/toeic.jpg" alt="TOEIC Speaking 성적표, 개인정보 가림" loading="lazy"></button>
+<div class="body"><b>TOEIC Speaking IH (150)</b><span>ETS, 한국TOEIC위원회</span><small>2026.09.20 응시, 2028.09.20까지 유효</small></div>
+</div>
+<div class="card cert aws lift">
+<div class="thumb"><span style="font-size:44px;font-weight:800;color:#ff9900">aws</span><span style="font-size:14px;color:#cbd5e1">Training Badge</span></div>
+<div class="body"><b>AWS Cloud Quest: Generative AI Practitioner</b><span>AWS Training and Certification</span>
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:6px"><small>2026.07.14</small><a class="btn" href="https://www.credly.com/badges/2d6018eb-c153-4aa1-ab16-dc813f51c870/public_url" style="background:#ff9900;color:#1c1917;font-weight:700;font-size:13px;padding:10px 14px">Credly 배지 보기</a></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div><p style="font-size:24px;font-weight:800;color:#fff">Contact</p><p style="margin-top:6px;font-size:15px;color:#cbd5e1">연구, 프로젝트, 인턴 관련 연락 환영합니다.</p></div>
+<div class="links"><a href="mailto:soseze1215@gmail.com">Email</a><a href="https://github.com/nitally0715">GitHub</a><a href="https://solved.ac/u/soseze1215">solved.ac</a></div>
+</div>
+</footer>
+
+<div class="viewer" role="dialog" aria-modal="true" aria-label="이미지 크게 보기" hidden>
+<button type="button" aria-label="닫기">×</button>
+<img alt="">
+</div>
+
+<script>
+(function () {
+  // project tabs
+  var tabs = document.querySelectorAll('[data-tab]');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (o) {
+        var on = o === t;
+        o.setAttribute('aria-selected', on ? 'true' : 'false');
+        document.getElementById(o.dataset.tab).hidden = !on;
+      });
+    });
+  });
+
+  // active section in the menu
+  var ids = ['research', 'projects', 'career', 'activity', 'awards', 'scholarship', 'certs'];
+  var links = {};
+  document.querySelectorAll('.menu a[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  function spy() {
+    var cur = null;
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 160) cur = id;
+    });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = 'certs';
+    Object.keys(links).forEach(function (id) {
+      links[id].classList.toggle('active', id === cur);
+      if (id === cur) links[id].setAttribute('aria-current', 'location'); else links[id].removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+
+  // reveal sections on scroll
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // image viewer
+  var viewer = document.querySelector('.viewer');
+  var vImg = viewer.querySelector('img');
+  var vClose = viewer.querySelector('button');
+  var last = null;
+  function open(src, alt, from) { last = from; vImg.src = src; vImg.alt = alt; viewer.hidden = false; vClose.focus(); }
+  function close() { viewer.hidden = true; vImg.src = ''; if (last) last.focus(); }
+  document.querySelectorAll('[data-view]').forEach(function (b) {
+    b.addEventListener('click', function () { open(b.dataset.view, b.dataset.alt, b); });
+  });
+  vClose.addEventListener('click', close);
+  viewer.addEventListener('click', function (e) { if (e.target === viewer) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !viewer.hidden) close(); });
+})();
+</script>
+</body>
+</html>
