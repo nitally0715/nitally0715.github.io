@@ -1,1 +1,0 @@
-# nitally0715.github.io
